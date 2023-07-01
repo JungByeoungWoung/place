@@ -14,12 +14,13 @@ import javax.persistence.EntityManager;
 public class UserRepository {
     private EntityManager em;
     public void saveUser(User user) throws CustomException {
-        try {
-            if (user.getUserId() != null) {
-                em.persist(user);
-            }
-        }catch (Exception e) {
-            throw new CustomException("user id 값이 null 값 입니다.");
+        if (user.getUserId() == null) {
+            em.persist(user);
+        }else {
+            em.merge(user);
         }
+    }
+    public User findUser(String userId) {
+        return em.find(User.class, userId);
     }
 }
