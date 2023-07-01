@@ -26,7 +26,7 @@ public class MybatisConfig {
         return DataSourceBuilder.create().build();
     }
     @Bean
-    public SqlSessionFactory sqlSessionFactory (DataSource dataSource) throws CustomException {
+    public SqlSessionFactory sqlSessionFactory (DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         sqlSessionFactoryBean.setMapperLocations(context.getResource("classpath:mapper/itemMapper.xml"));
