@@ -10,9 +10,10 @@ import javax.persistence.Id;
 @Entity(name = "user")
 @Getter @Setter
 public class User {
-    @Id
+
     @GeneratedValue
     private int userNum;
+    @Id
     private String userId;
     private String userName;
     private String userPwd;

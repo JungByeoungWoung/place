@@ -26,7 +26,7 @@ public class MybatisConfig {
         return DataSourceBuilder.create().build();
     }
     @Bean
-    public SqlSessionFactory sqlSessionFactory (DataSource dataSource) throws Exception {
+    public SqlSessionFactory sqlSessionFactory (DataSource dataSource) throws CustomException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         sqlSessionFactoryBean.setMapperLocations(context.getResource("classpath:mapper/itemMapper.xml"));
@@ -39,7 +39,7 @@ public class MybatisConfig {
 
     // Mybatis Template
     @Bean
-    public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) throws Exception {
+    public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) throws CustomException {
         SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory);
 
         sqlSessionTemplate.getConfiguration().setMapUnderscoreToCamelCase(true);
