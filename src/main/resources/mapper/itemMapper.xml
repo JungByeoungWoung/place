@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.market.place.mapper.ItemMapper">
+    <insert id="insertItem" parameterType="Item">
+        insert into sys.item (itemId, userName, price, quantity, createUser)
+        values (#{itemId}, #{userName}, #{price}, #{quantity}, #{createUser});
+    </insert>
+
+    <select id="findAll" resultType="Item">
+        select * from sys.item;
+    </select>
+
+    <delete id="deleteItem" parameterType="int">
+        DELETE FROM sys.item WHERE itemNum = #{itemNum};
+    </delete>
+</mapper>
