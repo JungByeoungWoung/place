@@ -1,22 +1,22 @@
 package com.market.place.domain;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity(name = "user")
+@Entity(name = "User")
 @Getter @Setter
 public class User {
-
-    @GeneratedValue
+    /*
+    * @Generatedvalue로 pk 생성,
+    * identity를 사용하여 auto increment
+    * */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_num")
     private int userNum;
-    @Id
+
     @Column(name = "user_id")
     private String userId;
     @Column(name = "user_name")

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/basic/user")
 @RequiredArgsConstructor
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
     @GetMapping("/userAddForm")
     public String addUserForm() {
         log.info("유저 등록 페이지 호출");
@@ -23,6 +23,6 @@ public class UserController {
     @PostMapping("/userResist")
     public String userResist(User user) throws CustomException {
         userService.saveUser(user);
-        return "ok";
+        return "redirect:/";
     }
 }
