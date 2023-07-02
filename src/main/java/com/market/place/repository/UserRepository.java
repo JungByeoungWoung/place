@@ -12,7 +12,7 @@ import javax.persistence.EntityManager;
 @Repository
 @RequiredArgsConstructor
 public class UserRepository {
-    private EntityManager em;
+    private final EntityManager em;
     public void saveUser(User user) throws CustomException {
         if (user.getUserId() == null) {
             em.persist(user);

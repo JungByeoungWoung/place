@@ -2,10 +2,13 @@ package com.market.place.controller;
 
 import com.market.place.common.CustomException;
 import com.market.place.domain.User;
+import com.market.place.repository.UserRepository;
 import com.market.place.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,20 +16,24 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.junit.jupiter.api.Assertions.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Transactional
-@RequiredArgsConstructor
+@Transactional @Slf4j
 class UserControllerTest {
+    @Autowired
     private UserService userservice;
+    @Autowired
+    private UserRepository userRepository;
     @Test
     void userResist() throws CustomException {
         //given
-        User user = new User();
-        user.setUserNum(1);
-        user.setUserId("testUser");
-        user.setUserPwd("123");
+        User user1 = new User();
+        user1.setUserNum(1);
+        user1.setUserId("testUser");
+        user1.setUserPwd("123");
         //when
-        userservice.saveUser(user);
+        String userId = userservice.saveUser(user1);
+        log.info("회원 가입한 userID : {}", userId);
+        User findUserId = userservice.findUser(userId);
         //then
-
+        assertEquals(userId,findUserId.getUserId());
     }
 }

@@ -10,15 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-    private UserRepository userRepository;
-    public void saveUser(User user) throws CustomException {
-        log.info("saveUser 호출 유저명 : {}",user.getUserName());
-        user.setUserName(user.getUserName());
-        user.setUserId(user.getUserId());
-        user.setUserPwd(user.getUserPwd());
-        user.setUserEmail(user.getUserEmail());
-        user.setAddress(user.getAddress());
+    private final UserRepository userRepository;
+    public String saveUser(User user) throws CustomException {
+        log.info("saveUser 호출 유저명 : {}",user.getUserId());
         userRepository.saveUser(user);
+        return user.getUserId();
     }
     public User findUser(String userId) {
         log.info("findUser 호출 유저 아이디 : {}", userId);
