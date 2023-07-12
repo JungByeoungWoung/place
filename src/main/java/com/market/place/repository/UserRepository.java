@@ -21,7 +21,7 @@ public class UserRepository {
     * */
     @Transactional
     public void saveUser(User user) throws CustomException {
-        if (user.getUserId() == null) {
+        if (user.getUserID() == null) {
             em.persist(user);
         }else {
             em.merge(user);
@@ -31,7 +31,7 @@ public class UserRepository {
         return em.find(User.class, userId);
     }
     public List<User> findUerList(String id) {
-        return em.createQuery("select n from User n where n.userId = :user_id")
+        return em.createQuery("select n from User n where n.userID = :user_id")
           .setParameter("user_id", id)
           .getResultList();
     }

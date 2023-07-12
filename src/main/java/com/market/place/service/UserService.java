@@ -17,8 +17,8 @@ public class UserService {
     public String saveUser(User user) throws CustomException {
         userCheck(user);
         userRepository.saveUser(user);
-        log.info("saveUser 유저명 : {}",user.getUserId());
-        return user.getUserId();
+        log.info("saveUser 유저명 : {}",user.getUserID());
+        return user.getUserID();
     }
 
     public User findUser(String userId) {
@@ -29,8 +29,8 @@ public class UserService {
     * 회원가입시 기존 유저인지 미리 체크 진행
     * */
     private void userCheck(User user) {
-        List<User> findUserName = userRepository.findUerList(user.getUserId());
-        log.info("검색 유저 명 : {}, 유저 개수 : {}",user.getUserId(),findUserName.size());
+        List<User> findUserName = userRepository.findUerList(user.getUserID());
+        log.info("검색 유저 명 : {}, 유저 개수 : {}",user.getUserID(),findUserName.size());
         if (findUserName.size() < 0) {
             throw new IllegalStateException("중복 회원이 존재합니다.");
         }

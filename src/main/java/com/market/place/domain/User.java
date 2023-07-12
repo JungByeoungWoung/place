@@ -18,13 +18,14 @@ public class User {
     private int userNum;
 
     @Column(name = "user_id")
-    private String userId;
+    private String userID;
     @Column(name = "user_name")
     private String userName;
     @Column(name = "user_pwd")
     private String userPwd;
+    private String userPwdcheck;
     @Column(name = "user_email")
-    private String userEmail;
+    private String email;
     @Column(name = "create_date")
     private String createDate;
     @Column(name = "address")
