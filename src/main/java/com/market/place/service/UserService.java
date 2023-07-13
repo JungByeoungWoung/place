@@ -30,7 +30,7 @@ public class UserService {
     * */
     private void userCheck(User user) {
         List<User> findUserName = userRepository.findUerList(user.getUserID());
-        log.info("검색 유저 명 : {}, 유저 개수 : {}",user.getUserID(),findUserName.size());
+        log.info("검색 유저 명 : {},  유저 개수 : {}",user.getUserID(),findUserName.size());
         if (findUserName.size() < 0) {
             throw new IllegalStateException("중복 회원이 존재합니다.");
         }
