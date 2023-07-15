@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Slf4j
 @Controller
 @RequestMapping("/basic/user")
@@ -24,5 +26,10 @@ public class UserController {
     public String userResist(User user) throws CustomException {
         userService.saveUser(user);
         return "redirect:/";
+    }
+    @ResponseBody
+    @GetMapping("/checkId")
+    public int validateUserID(String userID) {
+        return userService.validateUserId(userID);
     }
 }

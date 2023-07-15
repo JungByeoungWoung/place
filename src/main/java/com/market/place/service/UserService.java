@@ -25,6 +25,15 @@ public class UserService {
         log.info("findUser 호출 유저 아이디 : {}", userId);
         return userRepository.findUser(userId);
     }
+    public int validateUserId(String userId) {
+        List<User> findUserList = userRepository.findUerList(userId);
+        log.info("validateUserId --> 중복 유저 수 : {}", findUserList.size());
+        if (findUserList.size() == 0 ) {
+            return 2;
+        }else {
+            return 1;
+        }
+    }
     /*
     * 회원가입시 기존 유저인지 미리 체크 진행
     * */

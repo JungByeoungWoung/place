@@ -30,4 +30,6 @@ public class User {
     private String createDate;
     @Column(name = "address")
     private String address;
+
+
 }
