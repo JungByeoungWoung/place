@@ -1,7 +1,7 @@
 package com.market.place.controller;
 
 import com.market.place.domain.Item;
-import com.market.place.service.ItemService;
+import com.market.place.service.ItemServiceImpl;
 import lombok.RequiredArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,21 +18,21 @@ import java.util.List;
 @RequestMapping("/basic/items")
 @RequiredArgsConstructor
 public class ItemController {
-    private final ItemService itemService;
+    private final ItemServiceImpl itemServiceImpl;
     @GetMapping("/itemAddForm")
     public String addForm () {
         return "/basic/items/itemAddForm";
     }
     @PostMapping("/itemResist")
     public String insertItem(Item item) {
-        itemService.itemResist(item);
+        itemServiceImpl.itemResist(item);
         System.out.println("=====Success Item Register=====");
         return "redirect:/";
     }
 
     @GetMapping
     public String findAll(Model model) {
-        model.addAttribute("items", itemService.findAll());
+        model.addAttribute("items", itemServiceImpl.findAll());
         System.out.println("=====Success Get Item List====");
         return "/basic/items/items";
     }

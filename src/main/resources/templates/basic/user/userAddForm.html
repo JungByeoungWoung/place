@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <link href="../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/bootstrap.min.css" rel="stylesheet"
+        th:href="@{/css/bootstrap.min.css}">
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <style>
         .container {
@@ -78,7 +79,7 @@
       </div>
       <div class="col">
         <button class="w-100 btn btn-secondary btn-lg" onclick="location.href='/'"
-                th:onclick="|location.href='/'|" type="button">취소</button>
+                th:onclick="|location.href='@{/}'|" type="button">취소</button>
       </div>
     </div>
   </form>

@@ -1,48 +1,16 @@
 package com.market.place.service;
 
-import com.market.place.common.CustomException;
 import com.market.place.domain.User;
-import com.market.place.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
+/**
+ * 유저 관련 서비스 인터페이스
+ */
+public interface UserService {
+    public String saveUser(User user);
 
-@Slf4j
-@Service
-@RequiredArgsConstructor
-public class UserService {
-    private final UserRepository userRepository;
-    public String saveUser(User user) throws CustomException {
-        userCheck(user);
-        userRepository.saveUser(user);
-        log.info("saveUser 유저명 : {}",user.getUserID());
-        return user.getUserID();
-    }
+    public User findUser(String userId);
 
-    public User findUser(String userId) {
-        log.info("findUser 호출 유저 아이디 : {}", userId);
-        return userRepository.findUser(userId);
-    }
-    public int validateUserId(String userId) {
-        List<User> findUserList = userRepository.findUerList(userId);
-        log.info("validateUserId --> 중복 유저 수 : {}", findUserList.size());
-        if (findUserList.size() == 0 ) {
-            return 2;
-        }else {
-            return 1;
-        }
-    }
-    /*
-    * 회원가입시 기존 유저인지 미리 체크 진행
-    * */
-    private void userCheck(User user) {
-        List<User> findUserName = userRepository.findUerList(user.getUserID());
-        log.info("검색 유저 명 : {},  유저 개수 : {}",user.getUserID(),findUserName.size());
-        if (findUserName.size() < 0) {
-            throw new IllegalStateException("중복 회원이 존재합니다.");
-        }
-    }
+    public void userCheck(User user);
 
+    public int validateUserId(String userId);
 }

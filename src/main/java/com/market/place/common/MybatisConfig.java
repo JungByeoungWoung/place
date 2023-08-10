@@ -1,5 +1,6 @@
 package com.market.place.common;
 
+import com.market.place.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;

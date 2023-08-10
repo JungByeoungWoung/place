@@ -1,6 +1,5 @@
 package com.market.place.repository;
 
-import com.market.place.common.CustomException;
 import com.market.place.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +19,7 @@ public class UserRepository {
     * readOnly는 select에서만 사용
     * */
     @Transactional
-    public void saveUser(User user) throws CustomException {
+    public void saveUser(User user) {
         if (user.getUserID() == null) {
             em.persist(user);
         }else {
