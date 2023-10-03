@@ -11,13 +11,14 @@ spring:
   jpa:
     database: mysql   # 추가 해준 부분
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect # 추가 해준 부분
-
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
      # show_sql: true ## system.out으로 출력 되어서 안씀
       format_sql: true
+server:
+  port: 8090
 logging:
   level:
     org.hibernate.SQL: trace
