@@ -1,8 +1,8 @@
 package com.market.place.service;
 
+import com.market.place.common.error.CustomException;
+import com.market.place.common.error.ErrorCode;
 import com.market.place.domain.User;
-import com.market.place.domain.error.ErrorCode;
-import com.market.place.exception.CustomException;
 import com.market.place.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
             log.info("saveUser 유저명 : {}",user.getUserID());
             return user.getUserID();
         }catch (Exception e) {
-            return e.getMessage();
+            throw new CustomException("Failed Register User", ErrorCode.REGISTER_FAILED);
         }
 
     }
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService{
         List<User> findUserName = userRepository.findUerList(user.getUserID());
         log.info("검색 유저 명 : {},  유저 개수 : {}",user.getUserID(),findUserName.size());
         if (findUserName.size() < 0) {
-            throw new CustomException(ErrorCode.ERR102);
+
         }
     }
 

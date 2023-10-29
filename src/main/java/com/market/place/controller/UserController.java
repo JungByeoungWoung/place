@@ -27,7 +27,6 @@ public class UserController {
         try {
             userService.saveUser(user);
         }catch (Exception e) {
-            log.info("예외 발생 : {}", e.getMessage());
             return "/basic/user/userAddForm";
         }
         return "redirect:/";
@@ -39,4 +38,5 @@ public class UserController {
         log.info(">>>>> 요청 USER ID : {}", userId);
         return userService.validateUserId(userId);
     }
+
 }
