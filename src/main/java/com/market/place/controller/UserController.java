@@ -5,10 +5,10 @@ import com.market.place.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -21,18 +21,22 @@ public class UserController {
         log.info("유저 등록 페이지 호출");
         return "/basic/user/userAddForm";
     }
+    /** 로그인 요청 */
     @PostMapping("/userResist")
-    public String userResist(@Valid @RequestBody User user, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
-            log.info("회원 가입 에러 발생");
+    public String userResist(@Valid @RequestBody User user) {
+        try {
+            userService.saveUser(user);
+        }catch (Exception e) {
+            log.info("예외 발생 : {}", e.getMessage());
             return "/basic/user/userAddForm";
         }
-        userService.saveUser(user);
         return "redirect:/";
     }
     @ResponseBody
-    @GetMapping("/checkId")
-    public int validateUserID(String userID) {
-        return userService.validateUserId(userID);
+    @PostMapping("/checkId")
+    public int validateUserID(@RequestBody Map<String, String> param) {
+        String userId = param.get("userId");
+        log.info(">>>>> 요청 USER ID : {}", userId);
+        return userService.validateUserId(userId);
     }
 }
