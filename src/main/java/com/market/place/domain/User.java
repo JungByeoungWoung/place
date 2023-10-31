@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Entity(name = "User")
 @Getter @Setter
 public class User {
+    private String token;
     /*
     * @Generatedvalue로 pk 생성,
     * identity를 사용하여 auto increment
@@ -37,8 +38,12 @@ public class User {
     @NotBlank
     private String createDate;
     @Column(name = "address")
-    @NotBlank(message = "주소는 Null 일 수 없습니다!")
+    @NotBlank(message = "우편번호는 Null 일 수 없습니다!")
     private String address;
+
+//    @Column(name = "streetaddress")
+//    @NotBlank(message = "지번 주소가 Null 값일 수 없습니다.")
+//    private String streetAddress;
 
 
 }

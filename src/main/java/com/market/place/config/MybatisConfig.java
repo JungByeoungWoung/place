@@ -1,6 +1,5 @@
-package com.market.place.common;
+package com.market.place.config;
 
-import com.market.place.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -40,7 +39,7 @@ public class MybatisConfig {
 
     // Mybatis Template
     @Bean
-    public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) throws CustomException {
+    public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
         SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory);
 
         sqlSessionTemplate.getConfiguration().setMapUnderscoreToCamelCase(true);
