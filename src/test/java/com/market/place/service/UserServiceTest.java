@@ -1,6 +1,5 @@
 package com.market.place.service;
 
-import com.market.place.exception.CustomException;
 import com.market.place.domain.User;
 import com.market.place.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -8,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
 @SpringBootTest
 class UserServiceTest {
@@ -17,7 +16,7 @@ class UserServiceTest {
     @Autowired
     UserServiceImpl userServiceImpl;
     @Test
-    void userIDValidateCheck() throws CustomException {
+    void userIDValidateCheck() {
         //given
         User user = new User();
         user.setUserNum(1);

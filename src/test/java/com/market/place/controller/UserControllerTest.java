@@ -1,6 +1,5 @@
 package com.market.place.controller;
 
-import com.market.place.exception.CustomException;
 import com.market.place.domain.User;
 import com.market.place.repository.UserRepository;
 import com.market.place.service.UserServiceImpl;
@@ -21,7 +20,7 @@ class UserControllerTest {
     @Autowired
     private UserRepository userRepository;
     @Test
-    void userResist() throws CustomException {
+    void userResist(){
         //given
         User user1 = new User();
         user1.setUserNum(1);

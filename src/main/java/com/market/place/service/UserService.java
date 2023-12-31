@@ -10,7 +10,7 @@ public interface UserService {
 
     public User findUser(String userId);
 
-    public void userCheck(User user);
+    public String userCheck(User user);
 
-    public int validateUserId(String userId);
+    public String validateUserId(String userId);
 }

@@ -1,5 +1,6 @@
 package com.market.place.domain;
 
+import com.market.place.utility.UtilityService;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +11,6 @@ import javax.validation.constraints.NotBlank;
 @Entity(name = "User")
 @Getter @Setter
 public class User {
-    private String token;
     /*
     * @Generatedvalue로 pk 생성,
     * identity를 사용하여 auto increment
@@ -29,21 +29,20 @@ public class User {
     @Column(name = "user_pwd")
     @NotBlank(message = "패스워드는 Null 일 수 없습니다!")
     private String userPwd;
-    @NotBlank
+
     private String userPwdcheck;
     @Column(name = "user_email")
     @Email(message = "이메일 형식이 아닙니다.")
     private String email;
     @Column(name = "create_date")
     @NotBlank
-    private String createDate;
-    @Column(name = "address")
-    @NotBlank(message = "우편번호는 Null 일 수 없습니다!")
-    private String address;
+    private String createDate = UtilityService.createTimeStamp();
+//    @Column(name = "address")
+//    @NotBlank(message = "우편번호는 Null 일 수 없습니다!")
+//    private String address;
 
 //    @Column(name = "streetaddress")
 //    @NotBlank(message = "지번 주소가 Null 값일 수 없습니다.")
 //    private String streetAddress;
-
 
 }
