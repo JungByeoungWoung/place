@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService{
      *
      * @param user
      */
-    public String userCheck(User user) {
+    private String userCheck(User user) {
         List<User> findUserName = userRepository.findUerList(user.getUserID());
         log.info("검색 유저 명 : {},  유저 개수 : {}",user.getUserID(),findUserName.size());
         if (findUserName.size() == 0) {
